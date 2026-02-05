@@ -2,10 +2,41 @@
 //
 
 #include <iostream>
-
+using namespace std;
+///parte1
+void parte1(int v[7], int n,int vec[],int &k){
+    int k = 0;
+    for (int i = 0; i <= n; i++) {
+        if (v[i] % 2 == 0) {
+            vec[k] = v[i];
+            k++;
+        }
+    }
+}
+void mostrar(int vec[], int n) {
+    for(int i=0;i<=n;i++){
+        cout << vec[i] << "|";
+    }
+}
+///parte2
+int mar(vec[], int n, ) {
+    int j = 0;
+    for (int i = 0;i <= n;i++) {
+        j = vec[i] + j;
+    }
+    return j;
+}
+///
 int main()
 {
-    std::cout << "Hello World!\n";
+    int vec[]= { 13,22,5,8,34,55,60 };
+    int v[];
+    int j;
+    parte1(vec, 7, v, j);
+    mostrar(v, j);
+int v= mar(vec, 7);
+cout << "El resultado de la suma de todo un vector es:" << v << endl;
+
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
