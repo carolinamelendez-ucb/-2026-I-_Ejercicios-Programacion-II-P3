@@ -2,10 +2,62 @@
 //
 
 #include <iostream>
+using namespace std;
+
+void ejercicio1()
+{
+	int numeros[7]={13, 22, 5, 8, 34, 55, 60};
+	for (int i = 0;i < 7;i++)
+	{
+		if (numeros[i] % 2 == 0)
+		{
+			cout << numeros[i] << " ";
+		}
+	}	
+	cout << endl;
+}
+void ejercicio2()
+{ 
+	int numeros[7] = { 1, 2, 5, 3, 1, 1, 1 };
+	int suma=0;
+	for (int i = 0;i < 7;i++)
+	{
+		suma=suma+ numeros[i];
+		
+	}
+	cout << suma << endl;
+}
+void ejercicio3()
+{
+
+	int matriz[3][3];
+	for (int i = 0;i < 3;i++)
+	{
+		for (int j = 0;j < 3;j++)
+		{
+			matriz[i][j] = i * j;
+		}
+	}
+
+	//mostarr matriz
+	for (int i = 0;i < 3;i++)
+	{
+		for (int j = 0;j < 3;j++)
+		{
+			cout<< matriz[i][j];
+		}
+	}
+
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	ejercicio1();
+	ejercicio2();
+	ejercicio3();
+//ejercicio4();
+
+
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
