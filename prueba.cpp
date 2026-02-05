@@ -1,19 +1,43 @@
 // prueba.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
 //
-
 #include <iostream>
+using namespace std;
+/*Dado el siguiente arrego de enteros, imprime los elementos pares */
+void Ejercicio_1()
+{
+    int numeros[] = { 13,22,5,8,34,55,60 };
+    int tam=7;
+    for (int pos = 0;pos < tam;pos++)
+    {
+        if (numeros[pos] % 2 == 0)
+        {
+            cout << "Los numero son: ";
+            cout << numeros[pos]<<endl;
+       }
+    }
 
+}
+void Ejercicio_2()
+{
+    int arr[] = { 1, 2, 3, 4, 5 };
+    int tam = 5;
+    int suma = 0;
+    for (int pos = 0;pos < tam;pos++)
+    {
+        suma = suma + arr[pos];
+    }
+    cout << "La suma es: " << suma << endl;
+}
+/*void Ejercicio_3()
+{
+int mat 
+
+}
+*/
 int main()
 {
-    std::cout << "Hello World!\n";
+    cout << "Ejercicio 1" << endl;
+    Ejercicio_1();
+    cout << "Ejercicio 2" << endl;
+    Ejercicio_2();
 }
-
-// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-// Depurar programa: F5 o menú Depurar > Iniciar depuración
-
-// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
-//   2. Use la ventana de Team Explorer para conectar con el control de código fuente
-//   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
-//   4. Use la ventana Lista de errores para ver los errores
-//   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
-//   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
