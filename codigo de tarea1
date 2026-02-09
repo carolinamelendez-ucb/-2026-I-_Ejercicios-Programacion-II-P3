@@ -1,0 +1,239 @@
+#include <iostream>
+#include <string>
+using namespace std;
+//parte1
+class Libro {
+private:
+    string titulo;
+    string autor;
+    int pagina;
+
+public:
+void setPagina(int p) {
+        if (p >= 0) {
+            pagina = p;
+        } else {
+            cout << "Error: El número de páginas no puede ser negativo. Se asignará 0." << endl;
+            pagina = 0;
+        }
+    }
+int getPagina() {
+    return pagina;
+}
+    Libro(string tituloA, string autorA, int paginaA) {
+       this-> titulo = tituloA;
+       this-> autor = autorA;
+       setPagina(paginaA);
+       
+    };
+    //metodos
+    void mostrar1() {
+        cout << "el titulo es : " << titulo << endl;
+        cout << "el autor de la pagina es : " << autor << endl;
+        cout << "la pagina actual es : " << pagina << endl;
+        
+    };
+
+};
+//parte2
+class producto {
+private:
+    string nombre;
+    float precio;
+    int stock;
+
+public:
+void setPrecio(float pre) {
+  if (pre >= 0) {
+      precio = pre;
+  } else {
+      cout << "Error: El precio no puede ser negativo. Se asignara 0." << endl;
+      precio = 0;
+  }
+};
+void setStock(int s) {
+  if (s >= 0) {
+      stock = s;
+    this->precio = precio * stock;
+  } else {
+      cout << "Error: El stock no puede ser negativo." << endl;
+  }
+};
+producto(string nombreA, float precioA){
+  this->nombre = nombreA;
+  setPrecio(precioA);
+  this->stock=0;
+}
+//metodos
+  void mostrar2() {
+      cout << "el nombre de la compra es : " << nombre << endl;
+      cout << "el precio de la compra es : " << precio << endl;
+      cout << "el stock a pagar es :" << stock <<" unidades "<< endl;
+};
+};
+class Pelicula {
+private:
+    // Atributos
+    string titulo;
+    string genero;
+    int duracion; 
+
+public:
+    Pelicula(string t, string g, int d) {
+        titulo = t;
+        genero = g;
+        setDuracion(d);
+    }
+
+    // --- Métodos Set (Setters) ---
+    void setTitulo(string t) {
+        titulo = t;
+    }
+    void setGenero(string g) {
+        genero = g;
+    }
+    void setDuracion(int d) {
+        if (d > 0) {
+            duracion = d;
+        } else {
+            cout << "Error: La duracion debe ser mayor a 0 minutos." << endl;
+            duracion = 1; 
+        }
+    }
+
+    // --- Método Mostrar ---
+    void mostrar() {
+        cout << "el titulo de la pelicula es : " << titulo << endl;
+        cout << "el genero de la pelicula es  : " << genero << endl;
+        cout << "La duracion de la pelicula es : " << duracion << " min." << endl;
+    }
+};
+//parte4
+class Mascota {
+private:
+    // Atributos
+    string nombre;
+    string tipo; 
+    int edad;
+
+public:
+    // Constructor con todos los atributos
+    Mascota(string nombre, string tipo, int edad) {
+        this->nombre = nombre;
+        this->tipo = tipo;
+        setEdad(edad); 
+    };
+    void setNombre(string n) {
+        nombre = n;
+    };
+    void setTipo(string t) {
+        tipo = t;
+    };
+    void setEdad(int e) {
+        if (e >= 0) {
+            edad = e;
+        } else {
+            cout << "Error: La edad no puede ser negativa. Se asignara 0." << endl;
+            edad = 0;
+        }
+    }
+void mostrar() {
+   cout << "nombre del animal : " << nombre << endl;
+    cout << "tipo del animal : " << tipo << endl;
+    cout << "edad del animal : " << edad << " años" << endl;
+}
+};
+class Pedido {
+private:
+    // Atributos
+    string codigo;
+    string producto;
+    int cantidad;
+    float precioUnitario;
+
+public:
+    Pedido(string c, string p, int cant, float precio) {
+        codigo = c;
+        producto = p;
+        setCantidad(cant);      
+        setPrecioUnitario(precio); 
+    };
+    void setCantidad(int cant) {
+        if (cant >= 0) {
+            cantidad = cant;
+        } else {
+            cout << "Error: La cantidad no puede ser negativa. Se asignara 0." << endl;
+            cantidad = 0;
+        }
+    };
+
+    void setPrecioUnitario(float precio) {
+        if (precio >= 0) {
+            precioUnitario = precio;
+        } else {
+            cout << "Error: El precio no puede ser negativo. Se asignara 0." << endl;
+            precioUnitario = 0;
+        }
+    }
+float calcularTotal() {
+    return cantidad * precioUnitario;
+}
+void mostrar() {
+    cout << "codigo  : " << codigo << endl;
+    cout << "producto : " << producto << endl;
+    cout << "cantidad  : " << cantidad << endl;
+    cout << "precio unit : $" << precioUnitario << endl;
+    cout << "total pagar : $" << calcularTotal() << endl; // Llamada al método
+    cout << "========================================" << endl;
+}
+};
+int main()
+{
+  ///parte1
+  int numPagina = 150;
+  cout << "----------------------------" << endl;
+  cout << "-- libro 1" << endl;
+  Libro libro1 = Libro("los tres cerditos", "jose",numPagina);
+  cout << "----------------------------" << endl;
+  libro1.mostrar1();
+  libro1.setPagina(200);
+  libro1.mostrar1();
+  cout << "----------------------------" << endl;
+  ///parte2
+  producto producto1("Laptop Gaming", 1200.50);
+  cout << "-- Estado Inicial --" << endl;
+  producto1.mostrar2();
+  cout << "-- Actualizando Stock y Nombre --" << endl;
+  producto1.setStock(15);
+  producto1.mostrar2();
+  ///parte3
+  cout << "----------------------------" << endl;
+     cout << "-- Estado Inicial --" << endl;
+    Pelicula peli1("Inception", "Ciencia Ficcion", 148);
+    peli1.mostrar();
+    cout << "-- Actualizando Stock y Nombre --" << endl;
+    peli1.setGenero("Accion / Suspenso");
+    peli1.setDuracion(150);
+    peli1.mostrar();
+    cout <<"----------------------------"<<endl;
+///parte4
+    cout << "-------------------------------"<<endl;    Mascota mascota1("firulais","perro",5);
+    mascota1.mostrar();
+    cout << "-------------------------------"<<endl;
+    cout << "Actualizando datos de la mascota..." <<     endl;
+    mascota1.setNombre("Lucas el Grande");
+    mascota1.setEdad(6);
+    mascota1.mostrar();
+    cout << "-------------------------------"<<endl;
+///parte5
+    cout << "-------------------------------"<<endl;
+    cout << "========== DETALLE DEL PEDIDO ==========" << endl;
+Pedido miPedido("P001", "Teclado Mecanico", 2, 45.50);
+    miPedido.mostrar();
+    cout<<"---------------------------------"<<endl;
+    cout << "Actualizando pedido..." << endl;
+    miPedido.setCantidad(5);
+    miPedido.setPrecioUnitario(40.00); 
+    miPedido.mostrar();
+    cout<<"---------------------------------"<<endl;
+};
