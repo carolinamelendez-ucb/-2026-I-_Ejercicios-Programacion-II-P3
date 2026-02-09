@@ -1,0 +1,142 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Libro {
+public:
+    string titulo;
+    string autor;
+    int paginas;
+
+    Libro(string t, string a, int p) {
+        titulo = t;
+        autor = a;
+        paginas = p;
+    }
+
+    void setPaginas(int p) { paginas = p; }
+
+    void mostrar() {
+        cout << titulo << " " << autor << " " << paginas << endl;
+    }
+};
+
+class Producto {
+public:
+    string nombre;
+    float precio;
+    int stock;
+
+    Producto(string n, float p) {
+        nombre = n;
+        precio = p;
+        stock = 0;
+    }
+
+    void setStock(int s) { stock = s; }
+    void setPrecio(float p) { precio = p; }
+
+    void mostrar() {
+        cout << nombre << " " << precio << " " << stock << endl;
+    }
+};
+
+class Pelicula {
+public:
+    string titulo;
+    string genero;
+    int duracion;
+
+    Pelicula(string t) {
+        titulo = t;
+        genero = "";
+        duracion = 0;
+    }
+
+    void setGenero(string g) { genero = g; }
+    void setDuracion(int d) { duracion = d; }
+
+    void mostrar() {
+        cout << titulo << " " << genero << " " << duracion << endl;
+    }
+};
+
+class Mascota {
+public:
+    string nombre;
+    string tipo;
+    int edad;
+
+    Mascota(string n, string t) {
+        nombre = n;
+        tipo = t;
+        edad = 0;
+    }
+
+    void setEdad(int e) { edad = e; }
+
+    void mostrar() {
+        cout << nombre << " " << tipo << " " << edad << endl;
+    }
+};
+
+class Pedido {
+public:
+    int codigo;
+    string producto;
+    int cantidad;
+    float precioUnitario;
+
+    Pedido(int c, string p) {
+        codigo = c;
+        producto = p;
+        cantidad = 0;
+        precioUnitario = 0;
+    }
+
+    void setCantidad(int c) { cantidad = c; }
+    void setPrecio(float p) { precioUnitario = p; }
+
+    float total() { return cantidad * precioUnitario; }
+
+    void mostrar() {
+        cout << codigo << " " << producto << " "
+            << cantidad << " " << precioUnitario
+            << "  Total: " << total() << endl;
+    }
+};
+
+int main() {
+
+    cout << " Libro "<<endl;
+    Libro l1("IT", "Juan", 100);
+    l1.mostrar();
+    l1.setPaginas(200);
+    l1.mostrar();
+
+    cout << " Producto "<<endl;
+    Producto p1("Laptop", 3000);
+    p1.mostrar();
+    p1.setStock(5);
+    p1.setPrecio(2800);
+    p1.mostrar();
+
+    cout << " Pelicula "<<endl;
+    Pelicula peli("Avatar");
+    peli.setGenero("Accion");
+    peli.setDuracion(180);
+    peli.mostrar();
+
+    cout << " Mascota "<<endl;
+    Mascota m1("Rambo", "Perro");
+    m1.setEdad(4);
+    m1.mostrar();
+
+    cout << " PEDIDO "<<endl;
+    Pedido pe1(1, "Teclado");
+    pe1.setCantidad(3);
+    pe1.setPrecio(50);
+    pe1.mostrar();
+
+    return 0;
+}
