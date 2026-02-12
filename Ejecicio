@@ -1,0 +1,236 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Carrera {
+private:
+    string nombre;
+    int duracion;
+
+public:
+    Carrera() {
+        nombre = "";
+        duracion = 0;
+    }
+
+    Carrera(string n) {
+        nombre = n;
+        duracion = 0;
+    }
+
+    Carrera(string n, int d) {
+        nombre = n;
+        duracion = d;
+    }
+
+    string getNombre() { return nombre; }
+    int getDuracion() { return duracion; }
+
+    void setNombre(string n) { nombre = n; }
+    void setDuracion(int d) { duracion = d; }
+
+    void mostrar() {
+        cout << "Carrera: " << nombre << endl;
+        cout << "Duracion: " << duracion << " anos" << endl;
+    }
+};
+
+class Estudiante {
+private:
+    string nombre;
+    int edad;
+    Carrera carrera;
+
+public:
+    Estudiante() {
+        nombre = "";
+        edad = 0;
+    }
+
+    Estudiante(string n, int e) {
+        nombre = n;
+        edad = e;
+    }
+
+    Estudiante(string n, int e, Carrera c) {
+        nombre = n;
+        edad = e;
+        carrera = c;
+    }
+
+    string getNombre() { return nombre; }
+    int getEdad() { return edad; }
+    Carrera getCarrera() { return carrera; }
+
+    void setNombre(string n) { nombre = n; }
+    void setEdad(int e) { edad = e; }
+    void setCarrera(Carrera c) { carrera = c; }
+
+    void mostrar() {
+        cout << "\n--- ESTUDIANTE ---" << endl;
+        cout << "Nombre: " << nombre << endl;
+        cout << "Edad: " << edad << endl;
+        carrera.mostrar();
+    }
+};
+
+class Cliente {
+private:
+    string nombre;
+    string nit;
+
+public:
+    Cliente() {
+        nombre = "";
+        nit = "";
+    }
+
+    Cliente(string n) {
+        nombre = n;
+        nit = "";
+    }
+
+    Cliente(string n, string ni) {
+        nombre = n;
+        nit = ni;
+    }
+
+    string getNombre() { return nombre; }
+    string getNit() { return nit; }
+
+    void setNombre(string n) { nombre = n; }
+    void setNit(string ni) { nit = ni; }
+
+    void mostrar() {
+        cout << "Cliente: " << nombre << endl;
+        cout << "NIT: " << nit << endl;
+    }
+};
+
+class Factura {
+private:
+    int numero;
+    double monto;
+    Cliente cliente;
+
+public:
+    Factura() {
+        numero = 0;
+        monto = 0;
+    }
+
+    Factura(int num) {
+        numero = num;
+        monto = 0;
+    }
+
+    Factura(int num, double m, Cliente c) {
+        numero = num;
+        monto = m;
+        cliente = c;
+    }
+
+    int getNumero() { return numero; }
+    double getMonto() { return monto; }
+    Cliente getCliente() { return cliente; }
+
+    void setNumero(int num) { numero = num; }
+    void setMonto(double m) { monto = m; }
+    void setCliente(Cliente c) { cliente = c; }
+
+    void mostrar() {
+        cout << "\n--- FACTURA ---" << endl;
+        cout << "Numero: " << numero << endl;
+        cout << "Monto: " << monto << endl;
+        cliente.mostrar();
+    }
+};
+
+class Propietario {
+private:
+    string nombre;
+    int edad;
+
+public:
+    Propietario() {
+        nombre = "";
+        edad = 0;
+    }
+
+    Propietario(string n) {
+        nombre = n;
+        edad = 0;
+    }
+
+    Propietario(string n, int e) {
+        nombre = n;
+        edad = e;
+    }
+
+    string getNombre() { return nombre; }
+    int getEdad() { return edad; }
+
+    void setNombre(string n) { nombre = n; }
+    void setEdad(int e) { edad = e; }
+
+    void mostrar() {
+        cout << "Propietario: " << nombre << endl;
+        cout << "Edad: " << edad << endl;
+    }
+};
+
+class Casa {
+private:
+    string direccion;
+    double precio;
+    Propietario propietario;
+
+public:
+    Casa() {
+        direccion = "";
+        precio = 0;
+    }
+
+    Casa(string d) {
+        direccion = d;
+        precio = 0;
+    }
+
+    Casa(string d, double p, Propietario pr) {
+        direccion = d;
+        precio = p;
+        propietario = pr;
+    }
+
+    string getDireccion() { return direccion; }
+    double getPrecio() { return precio; }
+    Propietario getPropietario() { return propietario; }
+
+    void setDireccion(string d) { direccion = d; }
+    void setPrecio(double p) { precio = p; }
+    void setPropietario(Propietario pr) { propietario = pr; }
+
+    void mostrar() {
+        cout << "\n--- CASA ---" << endl;
+        cout << "Direccion: " << direccion << endl;
+        cout << "Precio: " << precio << endl;
+        propietario.mostrar();
+    }
+};
+
+int main() {
+
+    Carrera c1("Ingenieria de Sistemas", 5);
+    Estudiante e1("Juan", 20, c1);
+    e1.mostrar();
+
+    Cliente cl1("Maria", "123456");
+    Factura f1(101, 2500.50, cl1);
+    f1.mostrar();
+
+    Propietario p1("Carlos", 45);
+    Casa casa1("Av. Libertador", 150000, p1);
+    casa1.mostrar();
+
+    return 0;
+}
