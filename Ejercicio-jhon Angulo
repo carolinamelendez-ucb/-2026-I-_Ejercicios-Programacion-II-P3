@@ -1,0 +1,85 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Propietario {
+private:
+    string nombre;
+    int edad;
+
+public:
+    Propietario() {
+        nombre = "";
+        edad = 0;
+    }
+
+    Propietario(string n) {
+        nombre = n;
+        edad = 0;
+    }
+
+    Propietario(string n, int e) {
+        nombre = n;
+        edad = e;
+    }
+
+    string getNombre() { return nombre; }
+    int getEdad() { return edad; }
+
+    void setNombre(string n) { nombre = n; }
+    void setEdad(int e) { edad = e; }
+
+    void mostrar() {
+        cout << "Propietario: " << nombre << endl;
+        cout << "Edad: " << edad << endl;
+    }
+};
+
+class Casa {
+private:
+    string direccion;
+    double precio;
+    Propietario propietario;
+
+public:
+    Casa() {
+        direccion = "";
+        precio = 0;
+    }
+
+    Casa(string d) {
+        direccion = d;
+        precio = 0;
+    }
+
+    Casa(string d, double p, Propietario pr) {
+        direccion = d;
+        precio = p;
+        propietario = pr;
+    }
+
+    string getDireccion() { return direccion; }
+    double getPrecio() { return precio; }
+    Propietario getPropietario() { return propietario; }
+
+    void setDireccion(string d) { direccion = d; }
+    void setPrecio(double p) { precio = p; }
+    void setPropietario(Propietario pr) { propietario = pr; }
+
+    void mostrar() {
+        cout << "\nCASA" << endl;
+        cout << "Direccion: " << direccion << endl;
+        cout << "Precio: " << precio << endl;
+        propietario.mostrar();
+    }
+};
+
+int main() {
+
+    Propietario p1("Carlos", 45);
+    Casa c1("Av Libertador", 150000, p1);
+
+    c1.mostrar();
+
+    return 0;
+}
