@@ -101,7 +101,7 @@ public:
 
 int main()
 {
-    // vector principal de socios
+  
     SocioVector socios(10);
 
     Socio* Juan = new Socio(4321, "Juan", 22222);
