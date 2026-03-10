@@ -1,0 +1,15 @@
+Diagramas UML:
+Son diagrmas que nos ayudan a saber el tipo de relaciones que tiene un componente o un tipo de objeto entre si 
+sin cambios de manera estatica, para enterde como funciona un sistema
+Diagramas de clases:
+Una clase es un elemento de modelado que define las características del objeto que representa, 
+incluidos sus atributos y comportamientos.
+Tipos de relaciones:
+Los tipos de relaciones en diagramas, especialmente en UML y Entidad-Relación (ER), 
+definen cómo interactúan los elementos. Las principales relaciones UML son:
+Asociación, herencia (generalización), agregación, composición y dependencia
+Las Relaciones y el Destructor:
+Los diagramas UML definen el ciclo de vida de los objetos mediante relaciones como Composición (rombo relleno) y Agregación (rombo vacío), 
+dictando cómo los destructores en código POO gestionan la memoria. 
+En composición, el destructor principal elimina sus componentes (fuerte), mientras que en agregación, 
+los componentes sobreviven al contenedor (débil)
