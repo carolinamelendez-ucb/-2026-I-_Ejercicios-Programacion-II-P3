@@ -1,0 +1,86 @@
+
+
+#include <iostream>
+#include <cstdlib>
+#include "Invitado.h"
+#include "Organizador.h"
+#include "Evento.h"
+#include "vectorInvitados.h"
+#include "vectorOrganizadores.h"
+#include "vectorEventos.h"
+
+using namespace std;
+
+int main() {
+
+	vectorOrganizadores listaOrganizadores(5);
+
+	Organizador* o1 = new Organizador("Carlos", 1);
+	Organizador* o2 = new Organizador("Maria", 2);
+	Organizador* o3 = new Organizador("Luis", 3);
+
+	listaOrganizadores.agregarOrganizador(o1);
+	listaOrganizadores.agregarOrganizador(o2);
+	listaOrganizadores.agregarOrganizador(o3);
+
+
+	vectorEventos listaEventos(3);
+
+	Evento* evento1 = new Evento("Concierto", 1, 5);
+	Evento* evento2 = new Evento("Festival", 2, 5);
+
+	listaEventos.agregarEvento(evento1);
+	listaEventos.agregarEvento(evento2);
+
+
+	Invitado* i1 = new Invitado("Pedro", 777111);
+	Invitado* i2 = new Invitado("Ana", 777222);
+	Invitado* i3 = new Invitado("Pedro", 777111);
+	Invitado* i4 = new Invitado("Ana", 777222);
+
+	system("pause");
+	evento1->agregarInvitado(i1);
+	evento1->agregarInvitado(i2);
+	evento1->agregarInvitado(i3);
+
+	evento2->agregarInvitado(i1);
+	evento2->agregarInvitado(i2);
+	evento2->agregarInvitado(i3);
+
+	for (int i = 0; i < listaEventos.getIndice(); i++) {
+
+		Evento* e = listaEventos.getEvento(i);
+
+		for (int j = 0; j < listaOrganizadores.getIndice(); j++) {
+
+			if (listaOrganizadores.getOrganizador(j)->estaDisponible()) {
+
+				e->asignarOrganizador(listaOrganizadores.getOrganizador(j));
+
+				break;
+			}
+		}
+
+	}
+
+	system("pause");
+	for (int i = 0; i < listaEventos.getIndice(); i++) {
+
+		cout << "EVENTO " << i + 1 << endl;
+
+		cout << "Organizadores:" << endl;
+		listaEventos.getEvento(i)->mostrarOrganizadores();
+
+		cout << "Invitados:" << endl;
+		listaEventos.getEvento(i)->mostrarInvitados();
+
+		cout << endl;
+	}
+	listaEventos.getEvento(0)->finalizarEvento();
+
+	listaOrganizadores.mostrarOrganizadores();
+
+	system("pause");
+
+	return 0;
+}

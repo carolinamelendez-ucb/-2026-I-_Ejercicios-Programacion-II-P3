@@ -1,0 +1,69 @@
+#pragma once
+#include "Evento.h"
+
+class vectorEventos {
+
+private:
+
+	Evento** eventos;
+	int tamanio;
+	int indice;
+
+public:
+
+	vectorEventos(int tamanio)
+	{
+		this->eventos = new Evento * [tamanio];
+		this->indice = 0;
+		this->tamanio = tamanio;
+	}
+
+	void agregarEvento(Evento* nuevoEvento) {
+
+		if (indice < tamanio) {
+
+			eventos[indice] = nuevoEvento;
+			indice++;
+		}
+	}
+
+	void mostrarEventos() {
+
+		for (int i = 0; i < indice; i++) {
+
+			cout << "Evento #" << i + 1 << endl;
+		}
+	}
+
+	Evento* getEvento(int i) {
+		return eventos[i];
+	}
+
+	int getIndice() {
+		return indice;
+	}
+	void finalizarEvento(int pos) {
+
+		if (pos >= 0 && pos < indice) {
+
+			eventos[pos]->finalizarEvento();
+
+			delete eventos[pos];
+
+			for (int i = pos; i < indice - 1; i++) {
+				eventos[i] = eventos[i + 1];
+			}
+
+			indice--;
+		}
+	}
+
+	~vectorEventos() {
+
+		for (int i = 0; i < indice; i++) {
+			delete eventos[i];
+		}
+
+		delete[] eventos;
+	}
+};

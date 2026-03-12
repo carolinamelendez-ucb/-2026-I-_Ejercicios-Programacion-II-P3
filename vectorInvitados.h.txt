@@ -1,0 +1,35 @@
+#pragma once
+#include "Organizador.h"
+#include "Invitado.h"
+class vectorInvitados {
+private:
+	Invitado** invitados;
+	int tamanio;
+	int indice;
+public:
+
+	vectorInvitados(int tamanio)
+	{
+		this->invitados = new Invitado * [tamanio];
+		this->indice = 0;
+		this->tamanio = tamanio;
+	}
+
+	void agregarInvitados(Invitado* nuevoInvitado) {
+		if (indice < tamanio) {
+			invitados[indice] = nuevoInvitado;
+			indice++;
+		}
+	}
+
+	void mostrarInvitados() {
+
+		for (int i = 0; i < indice; i++) {
+			invitados[i]->mostrar();
+		}
+	}
+
+	~vectorInvitados() {
+		delete[] invitados;
+	}
+};
