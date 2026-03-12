@@ -1,0 +1,27 @@
+#pragma once
+#include <string>
+#include <iostream>
+using namespace std;
+
+class Invitado {
+private:
+	string nombre;
+	int telefono;
+public:
+	Invitado(const string& nombre, int telefono)
+		: nombre(nombre), telefono(telefono)
+	{
+		this->nombre = nombre;
+		this->telefono = telefono;
+	}
+	
+	void mostrar() {
+		cout << "Nombre: " << nombre << endl;
+		cout << "Telefono: " << telefono << endl;
+
+
+	}
+	~Invitado() {
+	}
+	
+};

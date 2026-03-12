@@ -1,0 +1,71 @@
+#pragma once
+#include "Organizador.h"
+
+class vectorOrganizadores {
+private:
+	Organizador** organizadores;
+	int tamanio;
+	int indice;
+public:
+
+	vectorOrganizadores(int tamanio)
+	{
+		this->organizadores = new Organizador * [tamanio];
+		this->indice = 0;
+		this->tamanio = tamanio;
+	}
+
+	void agregarOrganizador(Organizador* nuevoOrganizador) {
+		if (indice < tamanio) {
+			organizadores[indice] = nuevoOrganizador;
+			indice++;
+		}
+	}
+
+	void ordenarRankyDisponibilidad() {
+		for (int i = 0; i < indice - 1; i++) {
+			for (int j = 0; j < indice - i - 1; j++) {
+
+				if (organizadores[j]->estaDisponible() < organizadores[j + 1]->estaDisponible() ||
+
+					(organizadores[j]->estaDisponible() == organizadores[j + 1]->estaDisponible() &&
+						organizadores[j]->getRank() < organizadores[j + 1]->getRank())) {
+
+					Organizador* aux = organizadores[j];
+					organizadores[j] = organizadores[j + 1];
+					organizadores[j + 1] = aux;
+				}
+			}
+		}
+	}
+	void asignarDisponibilidad(int i) {
+
+		if (i >= 0 && i < indice) {
+			organizadores[i]->asignarEvento();
+		}
+	}
+	void mostrarOrganizadores() {
+
+		ordenarRankyDisponibilidad();
+
+		for (int i = 0; i < indice; i++) {
+			organizadores[i]->mostrar();
+		}
+	}
+	
+	bool getDisponibilidad(int i) {
+		return organizadores[i]->estaDisponible();
+	}
+
+	int getIndice() {
+		return indice;
+	}
+
+	Organizador* getOrganizador(int i) {
+		return organizadores[i];
+	}
+
+	~vectorOrganizadores() {
+		delete[] organizadores;
+	}
+};

@@ -1,0 +1,65 @@
+#pragma once
+#include"vectorInvitados.h"
+#include"vectorOrganizadores.h"
+
+class Evento {
+private:
+	string nombre;
+	int id;
+	vectorOrganizadores* OrganizadoresEvento;
+	vectorInvitados* invitadosEvento;
+	int tamanio;
+public:
+
+	Evento(const string& nombre, int id,int tamanio)
+	{
+		this->nombre = nombre;
+		this->id = id;
+		this->tamanio = tamanio;
+
+		OrganizadoresEvento = new vectorOrganizadores(tamanio);
+		invitadosEvento = new vectorInvitados(tamanio);
+	}
+
+	void asignarEvento(int i) {
+		OrganizadoresEvento->asignarDisponibilidad(i);
+	}
+	void agregarInvitado(Invitado* inv) {
+		invitadosEvento->agregarInvitados(inv);
+	}
+
+	void asignarOrganizador(Organizador* org) {
+
+		if (org->estaDisponible()) {
+
+			OrganizadoresEvento->agregarOrganizador(org);
+			org->asignarEvento();
+
+		}
+	}
+	void mostrarOrganizadores() {
+		OrganizadoresEvento->mostrarOrganizadores();
+	}
+	void mostrarInvitados() {
+		invitadosEvento->mostrarInvitados();
+	}
+	void finalizarEvento() {
+
+		for (int i = 0; i < OrganizadoresEvento->getIndice(); i++) {
+
+			Organizador* org = OrganizadoresEvento->getOrganizador(i);
+
+			org->incrementarRank();
+
+		}
+
+		cout << "Evento finalizado" <<endl;
+
+	}
+	~Evento() {
+
+		delete invitadosEvento;
+		delete OrganizadoresEvento;
+
+	}
+};
