@@ -1,0 +1,37 @@
+nombre	numer_materias
+matias	6
+guido	7
+luciano	4
+erick	7
+andres	6
+camila	5
+gabriela	5
+paolo	6
+joel	5
+laura	5
+robert	6
+dui	6
+liz	6
+alejandro	4
+jose	7
+deysi	4
+chelcy	5
+jose	5
+esteban	6
+diego	5
+leonardo	6
+joel	6
+adrian	4
+carlos	6
+gabriela	7
+matias	7
+antonio	6
+edwin	5
+adrian	7
+randall	6
+	
+promedio	5,666666667
+	
+varianza	0,91954023
+	
+desviacion_estandar	0,958926603
