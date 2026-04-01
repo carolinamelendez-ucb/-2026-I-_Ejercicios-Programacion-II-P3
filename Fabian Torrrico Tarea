@@ -1,0 +1,68 @@
+include <iostream>
+#include <string>
+
+using namespace std;
+
+class Animal {
+protected:
+    string nombre;
+    int edad;
+    string raza;
+
+public:
+    Animal(const string& nombre, int edad, const string& raza)
+        : nombre(nombre), edad(edad), raza(raza)
+    {
+    }
+
+    void mostrar() {
+        cout << "Nombre: " << nombre << endl;
+        cout << "Edad: " << edad << endl;
+        cout << "Raza: " << raza << endl;
+    }
+
+    virtual void hacerSonido() = 0;
+};
+
+class Perro : public Animal {
+private:
+    string tamanio;
+public:
+    Perro(const string& nombre, int edad, const string& raza, const string& tamanio)
+        : Animal(nombre, edad, raza)
+    {
+        this->tamanio = tamanio;
+    }
+
+    void hacerSonido() {
+        cout << "Guau auuu" << endl;
+    }
+};
+
+class Gato : public Animal {
+public:
+    Gato(const string& nombre, int edad, const string& raza)
+        : Animal(nombre, edad, raza)
+    {
+    }
+
+    void hacerSonido() {
+        cout << "Miauuuu" << endl;
+    }
+};
+
+
+int main()
+{
+    Animal** listaAnimales = new Animal * [20]; 
+    listaAnimales[0] = new Perro("toni", 4, "salchicha", "pequeño");
+    listaAnimales[1] = new Gato("negra", 3, "Siames");
+    listaAnimales[2] = new Perro("loudres", 1, "Chihuahua", "tiny");
+    listaAnimales[3] = new Gato("gaturro", 10, "loct");
+
+    for (int i = 0;i != 4;i++) {
+        listaAnimales[i]->mostrar();
+        listaAnimales[i]->hacerSonido();
+        cout << endl;
+    }
+}
