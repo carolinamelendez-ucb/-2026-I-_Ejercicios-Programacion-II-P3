@@ -1,0 +1,57 @@
+using namespace std;
+
+class Node
+{
+private:
+
+	string valor;
+	Node* ptrsiguiente;
+public:
+	Node(string nuevValor)
+	{
+		valor = nuevValor;
+		ptrsiguiente = nullptr;
+	}
+	void setValor(string nuevValor)
+	{
+		valor = nuevValor;
+	}
+	string getValor()
+	{
+		return valor;
+	}
+	void setSiguiente(Node* nuevSiguiente)
+	{
+		ptrsiguiente = nuevSiguiente;
+	}
+	Node* getSiguiente()
+	{
+		return ptrsiguiente;
+	}
+	void agregarSiguiente(string nuevValor)
+	{
+		this->ptrsiguiente = new Node(nuevValor);
+	}
+	
+};
+
+#pragma once
+#include "Node.h"
+class LinkedList
+{
+private:
+	Node* primernodo;
+public:
+	LinkedList()
+	{
+		primernodo = nullptr;
+	}
+	void agregar(string nuevValor)
+	{
+		primernodo = new Node(nuevValor);
+	}
+	void mostrar()
+	{
+		cout << "Valor: " << primernodo->getValor() << endl;
+	}
+};
